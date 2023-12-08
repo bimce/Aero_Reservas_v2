@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <layer-list>
+        <!-- Fondo del Spinner con bordes redondeados y un poco más oscuro -->
+        <item>
+            <shape>
+                <solid android:color="#A0A0A0" /> <!-- Ajusta el color oscuro según tus preferencias -->
+                <corners android:radius="12dp" /> <!-- Ajusta el radio para redondear los bordes -->
+            </shape>
+        </item>
+
+        <!-- Icono del Spinner (flecha hacia abajo) -->
+        <item android:right="8dp">
+            <bitmap android:src="@drawable/ic_arrow_drop_down" android:gravity="end|center_vertical" />
+        </item>
+
+        <!-- Borde del Spinner con un tono más oscuro -->
+        <item>
+            <shape>
+                <solid android:color="#808080" /> <!-- Ajusta el color más oscuro según tus preferencias -->
+                <corners android:radius="12dp" /> <!-- Ajusta el radio para redondear los bordes -->
+                <stroke
+                    android:width="2dp"
+                    android:color="#404040" /> <!-- Ajusta el color del borde según tus preferencias -->
+            </shape>
+        </item>
+    </layer-list>
+</selector>

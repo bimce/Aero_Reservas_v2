@@ -25,44 +25,59 @@
             android:id="@+id/editTextNombreApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre y Apellido" />
+            android:hint="Nombre y Apellido"
+            android:imeOptions="actionNext"
+            android:inputType="text"/>
+
         <EditText
             android:id="@+id/editTextPais"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="País" />
+            android:hint="País"
+            android:imeOptions="actionNext"
+            android:inputType="text"/>
 
         <EditText
             android:id="@+id/editTextNumeroDocumento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Número de Documento" />
+            android:hint="Número de Documento"
+            android:imeOptions="actionNext"
+            android:inputType="text"/>
 
-        <EditText
-            android:id="@+id/editTextFechaNacimiento"
-            android:layout_width="match_parent"
+        <!-- Reemplazar EditText con DatePicker -->
+        <Button
+            android:id="@+id/botonMostrarDatePicker"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Fecha de Nacimiento" />
+            android:text="Seleccionar Fecha de Nacimiento"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textSize="14sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"/>
 
-        <EditText
-            android:id="@+id/editTextSexo"
-            android:layout_width="match_parent"
+        <Spinner
+            android:id="@+id/spinnerSexo"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:hint="Sexo" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" />
 
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email" />
+            android:hint="Email"
+            android:imeOptions="actionNext"
+            android:inputType="text"/>
 
         <EditText
             android:id="@+id/editTextTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Teléfono" />
-
-        <!-- ... Other Form Fields ... -->
+            android:hint="Teléfono"
+            android:imeOptions="actionNext"
+            android:inputType="text"/>
 
         <Button
             android:id="@+id/botonRealizarReserva"
@@ -71,5 +86,6 @@
             android:text="Realizar Reserva" />
     </LinearLayout>
 </RelativeLayout>
+
 
 
