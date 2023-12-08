@@ -7,10 +7,14 @@
     <!-- Bottom Navigation Bar -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/barraNavegacion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        app:menu="@menu/menu_navegacion"/>
+        android:layout_width="422dp"
+        android:layout_height="65dp"
+        app:itemBackground="@color/colornabvar"
+        app:itemIconTint="@color/colorPrimary"
+        app:itemTextColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_navegacion"></com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <!-- Reservation Form -->
     <LinearLayout
@@ -25,51 +29,68 @@
             android:id="@+id/editTextNombreApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre y Apellido" />
+            android:hint="Nombre y Apellido"
+            android:imeOptions="actionNext"
+            android:inputType="text"/>
+
         <EditText
             android:id="@+id/editTextPais"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="País" />
+            android:hint="País"
+            android:imeOptions="actionNext"
+            android:inputType="text"/>
 
         <EditText
             android:id="@+id/editTextNumeroDocumento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Número de Documento" />
+            android:hint="Número de Documento"
+            android:imeOptions="actionNext"
+            android:inputType="text"/>
 
-        <EditText
-            android:id="@+id/editTextFechaNacimiento"
-            android:layout_width="match_parent"
+        <!-- Reemplazar EditText con DatePicker -->
+        <Button
+            android:id="@+id/botonMostrarDatePicker"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Fecha de Nacimiento" />
+            android:text="Seleccionar Fecha de Nacimiento"
+            android:backgroundTint="@color/colorPrimary"
+            android:textSize="14sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"/>
 
-        <EditText
-            android:id="@+id/editTextSexo"
-            android:layout_width="match_parent"
+        <Spinner
+            android:id="@+id/spinnerSexo"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:hint="Sexo" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" />
 
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email" />
+            android:hint="Email"
+            android:imeOptions="actionNext"
+            android:inputType="text"/>
 
         <EditText
             android:id="@+id/editTextTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Teléfono" />
-
-        <!-- ... Other Form Fields ... -->
+            android:hint="Teléfono"
+            android:imeOptions="actionNext"
+            android:inputType="text"/>
 
         <Button
             android:id="@+id/botonRealizarReserva"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
             android:text="Realizar Reserva" />
     </LinearLayout>
 </RelativeLayout>
+
 
 

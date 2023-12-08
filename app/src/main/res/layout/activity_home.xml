@@ -4,18 +4,50 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    app:layout_constraintTop_toTopOf="parent"
     android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/logoTituloLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="128dp"
+            android:layout_height="53dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/tituloTextView"
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Aero Reservas"
+            android:textColor="#179cd9"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/barraNavegacion"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="422dp"
+        android:layout_height="65dp"
+        app:itemBackground="@color/colornabvar"
+        app:itemIconTint="@color/colorPrimary"
+        app:itemTextColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_navegacion" />
+        app:layout_constraintTop_toBottomOf="@+id/logoTituloLayout"
+        app:menu="@menu/menu_navegacion"></com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    <EditText
+
+<EditText
         android:id="@+id/editTextOrigen"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -57,6 +89,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/colorPrimary"
             app:layout_constraintEnd_toStartOf="@+id/textInputLayoutFechaLlegada"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextDestino">
@@ -99,18 +132,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Buscar"
+        android:backgroundTint="#179cd9"
         app:layout_constraintTop_toBottomOf="@+id/fechaLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/botonBuscar"
+        android:layout_width="408dp"
+        android:layout_height="431dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/botonBuscar"
+        app:layout_constraintVertical_bias="0.255" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

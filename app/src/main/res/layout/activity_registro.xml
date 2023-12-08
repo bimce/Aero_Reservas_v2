@@ -1,47 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editTextRut"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="RUT"
-        android:inputType="text" />
+    <!-- activity_main.xml -->
 
-    <EditText
-        android:id="@+id/editTextNombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextRut"
-        android:hint="Nombre"
-        android:inputType="text"
-        android:textSize="18sp" />
 
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextNombre"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:textSize="18sp" />
+    <ImageView
+        android:id="@+id/logo_registrar"
+        android:layout_width="185dp"
+        android:layout_height="173dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/baseline_circle_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextContraseña"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextEmail"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:textSize="18sp" />
+    <ImageView
+        android:id="@+id/logoregistrar2"
+        android:layout_width="133dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/baseline_person_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnRegistrar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextContraseña"
-        android:text="Registrar"
-        android:textSize="18sp" />
-</RelativeLayout>
+    <View
+        android:id="@+id/bottomLine"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/degradado_titulo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="331dp"
+        android:layout_height="399dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.566"
+        tools:context=".MainActivity">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/degradado_titulo"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <EditText
+                android:id="@+id/editTextRut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="RUT"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <EditText
+                android:id="@+id/editTextNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextRut"
+                android:hint="Nombre"
+                android:inputType="text"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextNombre"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/editTextContraseña"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextEmail"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnRegistrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextContraseña"
+                android:backgroundTint="#179cd9"
+                android:text="Registrarse"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -87,8 +87,10 @@
                 android:id="@+id/botonReservar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorPrimary"
+                android:backgroundTintMode="screen"
                 android:text="Reservar"
-                android:layout_gravity="end|bottom" /> <!-- Alinear al final (bottom) y a la derecha (end) -->
+                android:layout_gravity="end|bottom" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

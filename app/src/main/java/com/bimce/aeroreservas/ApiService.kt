@@ -37,6 +37,28 @@ data class Avion(
 
 )
 
+data class Reserva(
+    @SerializedName("usuario_rut")
+    val usuario_rut: String,
+    @SerializedName("ID_Vuelos")
+    val ID_Vuelos: String,
+    @SerializedName("Nombre_Apellido")
+    val Nombre_Apellido: String,
+    @SerializedName("Pais")
+    val Pais: String,
+    @SerializedName("Numero_de_Documento")
+    val Numero_de_Documento: String,
+    @SerializedName("Fecha_de_Nacimiento")
+    val Fecha_de_Nacimiento: String,
+    @SerializedName("Sexo")
+    val Sexo: String,
+    @SerializedName("Email")
+    val Email: String,
+    @SerializedName("Telefono")
+    val Telefono: String
+)
+
+
 
 
 interface ApiService {
@@ -59,7 +81,10 @@ interface ApiService {
         @Query("Fecha_y_hora_de_salida") fechaSalida: String?,
         @Query("Fecha_y_hora_de_llegada") fechaLlegada: String?
     ): Call<List<Avion>>
+    @GET("/obtener-historial-reservas")
+    fun obtenerHistorialReservas(@Query("rut") rut: String): Call<List<Reserva>>
 }
+
 
 
 

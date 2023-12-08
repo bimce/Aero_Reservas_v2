@@ -105,6 +105,9 @@ class home_Activity : AppCompatActivity() {
                 }
                 R.id.menu_reservas -> {
                     Toast.makeText(this, "Clic en Mis Reservas", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, HistorialReservasActivity::class.java)
+                    startActivity(intent)
+
                     true
                 }
                 R.id.cerrar_sesion -> {

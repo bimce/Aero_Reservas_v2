@@ -3,6 +3,7 @@ package com.bimce.aeroreservas
 import ApiService
 import Credenciales
 import RespuestaAutenticacion
+import android.content.Context
 import android.content.Intent
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,6 +21,7 @@ import org.json.JSONObject
 class MainActivity : AppCompatActivity() {
 
     private val apiBaseUrl = "http://10.0.2.2:3001/"
+    private val sharedPreferencesKey = "user_data"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +69,7 @@ class MainActivity : AppCompatActivity() {
 
                     if (respuesta?.usuario != null) {
                         val mensaje = respuesta.mensaje ?: "Inicio de sesión exitoso"
+                        guardarRutUsuario(respuesta.usuario.rut)
                         mostrarMensaje("$mensaje - Rut del  usuario: ${respuesta.usuario.rut}")
                         val intent = Intent(this@MainActivity, home_Activity::class.java)
                         startActivity(intent)
@@ -106,8 +109,13 @@ class MainActivity : AppCompatActivity() {
     private fun ocultarMensaje() {
         // Puedes implementar lógica adicional si es necesario
     }
+    private fun guardarRutUsuario(rut: String) {
+        val sharedPreferences = getSharedPreferences(sharedPreferencesKey, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("rut", rut)
+        editor.apply()
+    }
 }
-
 
 
 
