@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Aero Reservas</string>
+    <string-array name="array_genero">
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
 </resources>
