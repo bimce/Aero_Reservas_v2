@@ -67,7 +67,12 @@ class MainActivity : AppCompatActivity() {
 
                     if (respuesta?.usuario != null) {
                         val mensaje = respuesta.mensaje ?: "Inicio de sesión exitoso"
-                        mostrarMensaje("$mensaje - Rut del  usuario: ${respuesta.usuario.rut}")
+                        val rutUsuario = respuesta.usuario.rut
+
+                        // Almacena el rut en SharedPreferences
+                        guardarRutEnSesion(rutUsuario)
+
+                        mostrarMensaje("$mensaje - Rut del usuario: $rutUsuario")
                         val intent = Intent(this@MainActivity, home_Activity::class.java)
                         startActivity(intent)
                         finish()
@@ -105,6 +110,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun ocultarMensaje() {
         // Puedes implementar lógica adicional si es necesario
+    }
+    private fun guardarRutEnSesion(rut: String) {
+        val sharedPreferences = getSharedPreferences("SesionUsuario", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("rut", rut)
+        editor.apply()
     }
 }
 

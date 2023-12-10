@@ -1,6 +1,3 @@
-import com.google.gson.annotations.SerializedName
-import okhttp3.RequestBody
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -36,7 +33,19 @@ data class Avion(
 
 
 )
-
+data class Reserva(
+    var operacion: String,
+    val ID_Vuelos: String, // Cambiado a ID_Vuelos para coincidir con la API
+    val Nombre_Apellido: String,
+    val Pais: String,
+    val Numero_de_Documento: String,
+    val Fecha_de_Nacimiento: String, // Puedes cambiar el tipo de dato según tus necesidades
+    val Sexo: String,
+    val Email: String,
+    val Telefono: String,
+    val ID_Cliente: String? = null,
+    val rutUsuario: String? = null,
+)
 
 
 interface ApiService {
@@ -48,6 +57,13 @@ interface ApiService {
 
     @POST("/registro-sql-android")
     fun registrarEnSQLAndroid(@Body comando: Comando): Call<String>
+
+    @POST("/registrar-reserva-mysql-android")
+    fun registrarReservaMySQLAndroid(@Body comando: Reserva): Call<String>
+
+    @POST("/registrar-reserva-mongodb-android")
+    fun registrarReservaMongoDBAndroid(@Body comando: Reserva): Call<String>
+
 
     @GET("/obtener-aviones")
     fun obtenerAviones(): Call<List<Avion>>

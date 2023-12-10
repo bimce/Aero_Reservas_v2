@@ -94,7 +94,13 @@ class AvionAdapter(private var listaAviones: List<Avion>) :
             // Manejar clic en el botón "Reservar"
             val context = holder.itemView.context
             val intent = Intent(context, ReservaActivity::class.java)
-            // Puedes pasar datos adicionales a ReservaActivity si es necesario
+
+            // Pasa el ID del vuelo a la actividad de reserva
+            intent.putExtra("ID_Vuelo", avion.ID_Vuelos) // Asegúrate de tener un campo 'ID_Vuelos' en tu clase Avion
+
+            // Puedes pasar más datos si es necesario
+            intent.putExtra("NombreVuelo", avion.Nombre_vuelo)
+
             context.startActivity(intent)
         }
 
@@ -103,6 +109,7 @@ class AvionAdapter(private var listaAviones: List<Avion>) :
             .load(avion.image)
             .into(holder.imageView)
     }
+
 
     override fun getItemCount(): Int {
         return listaAviones.size
