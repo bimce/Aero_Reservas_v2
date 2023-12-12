@@ -22,6 +22,8 @@ import java.util.Calendar
 import java.util.Locale
 
 class ReservaActivity : AppCompatActivity() {
+    private val sharedPreferencesKey = "user_data"
+    val sessionManager = SessionManager(this)
     private lateinit var botonMostrarDatePicker: Button
     private lateinit var botonRealizarReserva: Button
     private lateinit var fechaNacimiento: Calendar
@@ -65,6 +67,15 @@ class ReservaActivity : AppCompatActivity() {
         // Configurar el botón para realizar la reserva
         botonRealizarReserva.setOnClickListener {
             realizarReserva()
+            Toast.makeText(
+                this@ReservaActivity,
+                "Reserva realizada con éxito",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            // Redirigir al usuario a home_Activity
+            val intent = Intent(this@ReservaActivity, home_Activity::class.java)
+            startActivity(intent)
         }
 
         val arrayGenero = resources.getStringArray(R.array.array_genero)
@@ -82,7 +93,6 @@ class ReservaActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menu_reservas -> {
-                    Toast.makeText(this, "Clic en Mis Reservas", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, HistorialReservasActivity::class.java)
                     startActivity(intent)
                     true
@@ -93,6 +103,7 @@ class ReservaActivity : AppCompatActivity() {
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     finish()
+                    sessionManager.cerrarSesion()
                     true
                 }
                 else -> false
@@ -157,6 +168,15 @@ class ReservaActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     // Procesar la respuesta exitosa de MySQL
                     val mensaje = response.body()
+                    Toast.makeText(
+                        this@ReservaActivity,
+                        "Reserva realizada con éxito",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    // Redirigir al usuario a home_Activity
+                    val intent = Intent(this@ReservaActivity, home_Activity::class.java)
+                    startActivity(intent)
                     // Puedes mostrar un mensaje de éxito o realizar otras acciones
                 } else {
                     // Manejar el error de la respuesta de MySQL
@@ -177,6 +197,15 @@ class ReservaActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     // Procesar la respuesta exitosa de MongoDB
                     val mensaje = response.body()
+                    Toast.makeText(
+                        this@ReservaActivity,
+                        "Reserva realizada con éxito",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    // Redirigir al usuario a home_Activity
+                    val intent = Intent(this@ReservaActivity, home_Activity::class.java)
+                    startActivity(intent)
                     // Puedes mostrar un mensaje de éxito o realizar otras acciones
                 } else {
                     // Manejar el error de la respuesta de MongoDB
@@ -191,7 +220,7 @@ class ReservaActivity : AppCompatActivity() {
 
 
     private fun obtenerRutEnSesion(): String {
-        val sharedPreferences = getSharedPreferences("SesionUsuario", MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences(sharedPreferencesKey, MODE_PRIVATE)
         return sharedPreferences.getString("rut", "") ?: ""
     }
 }

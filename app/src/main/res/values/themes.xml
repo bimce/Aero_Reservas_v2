@@ -1,10 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <!-- Base application theme. -->
     <style name="Base.Theme.AeroReservas" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
-
-
+        <!-- Aplica el tema del calendario en pantalla completa -->
     </style>
 
+    <!-- Estilo personalizado para el calendario en pantalla completa -->
+
+    <!-- Estilo de la aplicación que hereda del estilo base -->
     <style name="Theme.AeroReservas" parent="Base.Theme.AeroReservas" />
+
 </resources>

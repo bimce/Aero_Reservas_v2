@@ -61,7 +61,10 @@ class MainActivity : AppCompatActivity() {
         val call = apiService.autenticarUsuario(credenciales)
 
         call.enqueue(object : Callback<RespuestaAutenticacion> {
-            override fun onResponse(call: Call<RespuestaAutenticacion>, response: Response<RespuestaAutenticacion>) {
+            override fun onResponse(
+                call: Call<RespuestaAutenticacion>,
+                response: Response<RespuestaAutenticacion>
+            ) {
                 ocultarMensaje()
 
                 if (response.isSuccessful) {
@@ -69,8 +72,8 @@ class MainActivity : AppCompatActivity() {
 
                     if (respuesta?.usuario != null) {
                         val mensaje = respuesta.mensaje ?: "Inicio de sesión exitoso"
-                        guardarRutUsuario(respuesta.usuario.rut)
                         mostrarMensaje("$mensaje - Rut del  usuario: ${respuesta.usuario.rut}")
+                        guardarRutUsuario(respuesta.usuario.rut)
                         val intent = Intent(this@MainActivity, home_Activity::class.java)
                         startActivity(intent)
                         finish()
@@ -109,13 +112,14 @@ class MainActivity : AppCompatActivity() {
     private fun ocultarMensaje() {
         // Puedes implementar lógica adicional si es necesario
     }
+
     private fun guardarRutUsuario(rut: String) {
         val sharedPreferences = getSharedPreferences(sharedPreferencesKey, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("rut", rut)
         editor.apply()
     }
-}
 
+}
 
 

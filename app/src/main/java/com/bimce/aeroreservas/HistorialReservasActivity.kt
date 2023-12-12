@@ -1,10 +1,9 @@
 package com.bimce.aeroreservas
 
 import ApiService
-import Reserva
+import Reservahistorial
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class HistorialReservasActivity : AppCompatActivity() {
     private val BASE_URL = "http://10.0.2.2:3001/"
     private val sharedPreferencesKey = "user_data"
+    val sessionManager = SessionManager(this)
 
     private lateinit var recyclerView: RecyclerView
 
@@ -58,6 +58,7 @@ class HistorialReservasActivity : AppCompatActivity() {
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     finish()
+                    sessionManager.cerrarSesion()
                     true
                 }
                 else -> false
@@ -73,7 +74,7 @@ class HistorialReservasActivity : AppCompatActivity() {
         return sharedPreferences.getString("rut", null)
     }
 
-    private fun obtenerHistorialReservas(rutUsuario: String) {
+    private fun obtenerHistorialReservas(usuario_rut: String) {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -81,12 +82,12 @@ class HistorialReservasActivity : AppCompatActivity() {
 
         val apiService = retrofit.create(ApiService::class.java)
 
-        val call: Call<List<Reserva>> = apiService.obtenerHistorialReservas(rutUsuario)
+        val call: Call<List<Reservahistorial>> = apiService.obtenerHistorialReservas(usuario_rut)
 
-        call.enqueue(object : Callback<List<Reserva>> {
-            override fun onResponse(call: Call<List<Reserva>>, response: Response<List<Reserva>>) {
+        call.enqueue(object : Callback<List<Reservahistorial>> {
+            override fun onResponse(call: Call<List<Reservahistorial>>, response: Response<List<Reservahistorial>>) {
                 if (response.isSuccessful) {
-                    val historialReservas: List<Reserva>? = response.body()
+                    val historialReservas: List<Reservahistorial>? = response.body()
 
                     if (historialReservas != null) {
                         // Configura y muestra el RecyclerView
@@ -98,7 +99,7 @@ class HistorialReservasActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<List<Reserva>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Reservahistorial>>, t: Throwable) {
                 Log.e("API Error", "Error en la solicitud a la API", t)
             }
         })

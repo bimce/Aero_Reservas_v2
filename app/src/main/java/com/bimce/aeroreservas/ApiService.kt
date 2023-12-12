@@ -38,6 +38,21 @@ data class Avion(
 )
 
 data class Reserva(
+    var operacion: String,
+    val ID_Vuelos: String, // Cambiado a ID_Vuelos para coincidir con la API
+    val Nombre_Apellido: String,
+    val Pais: String,
+    val Numero_de_Documento: String,
+    val Fecha_de_Nacimiento: String, // Puedes cambiar el tipo de dato según tus necesidades
+    val Sexo: String,
+    val Email: String,
+    val Telefono: String,
+    val ID_Cliente: String? = null,
+    val rutUsuario: String? = null,
+)
+
+
+data class Reservahistorial(
     @SerializedName("usuario_rut")
     val usuario_rut: String,
     @SerializedName("ID_Vuelos")
@@ -82,7 +97,16 @@ interface ApiService {
         @Query("Fecha_y_hora_de_llegada") fechaLlegada: String?
     ): Call<List<Avion>>
     @GET("/obtener-historial-reservas")
-    fun obtenerHistorialReservas(@Query("rut") rut: String): Call<List<Reserva>>
+    fun obtenerHistorialReservas(@Query("rut") rut: String): Call<List<Reservahistorial>>
+
+
+    @POST("/registrar-reserva-mysql-android")
+    fun registrarReservaMySQLAndroid(@Body comando: Reserva): Call<String>
+
+    @POST("/registrar-reserva-mongodb-android")
+    fun registrarReservaMongoDBAndroid(@Body comando: Reserva): Call<String>
+
+
 }
 
 

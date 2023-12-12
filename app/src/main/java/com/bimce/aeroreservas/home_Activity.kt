@@ -3,6 +3,7 @@ package com.bimce.aeroreservas
 import ApiService
 import Avion
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -26,7 +27,7 @@ import java.util.Calendar
 import java.util.Locale
 
 class home_Activity : AppCompatActivity() {
-
+    val sessionManager = SessionManager(this)
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AvionAdapter
     private var listaAviones: List<Avion> = emptyList()
@@ -104,7 +105,6 @@ class home_Activity : AppCompatActivity() {
                     true
                 }
                 R.id.menu_reservas -> {
-                    Toast.makeText(this, "Clic en Mis Reservas", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, HistorialReservasActivity::class.java)
                     startActivity(intent)
 
@@ -116,6 +116,7 @@ class home_Activity : AppCompatActivity() {
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     finish()
+                    sessionManager.cerrarSesion()
                     true
                 }
                 else -> false
@@ -202,6 +203,7 @@ class home_Activity : AppCompatActivity() {
             }
         })
     }
+
 }
 
 
